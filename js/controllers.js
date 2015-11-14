@@ -3,7 +3,7 @@ var ncApp = angular.module('ncApp', []);
 ncApp.controller('GhCtrl', function($scope, $http) {
   var userName = 'novicell',
       userType = 'orgs',
-      token = '9f35627ba1b1d37f437253ade38212ca825af5a7';
+      token = '8390b29418ebbdae5a87df4292a86a2f996cccd8';
 
   // Get repo data
   $http.get('https://api.github.com/' + userType + '/' + userName + '/repos?access_token=' + token).success(function(data) {
