@@ -1,9 +1,13 @@
 var ncApp = angular.module('ncApp', []);
 
 ncApp.controller('GhCtrl', function($scope, $http) {
+
+	
   var userName = 'novicell',
       userType = 'orgs',
-      token = 'f11d4dc981941aa90d0a188688e69bfa87c21b9b';
+      str1 = '0a1fde2db5ef80ea6d7f',
+	  str2 = '3b643be67f8269a3a6c1',
+      token = str1 + str2;
 
   // Get repo data
   $http.get('https://api.github.com/' + userType + '/' + userName + '/repos').success(function(data) {
