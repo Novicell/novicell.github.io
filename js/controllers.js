@@ -10,7 +10,7 @@ ncApp.controller('GhCtrl', function($scope, $http) {
       token = str1 + str2;
 
   // Get repo data
-  $http.get('https://api.github.com/' + userType + '/' + userName + '/repos').success(function(data) {
+  $http.get('https://api.github.com/' + userType + '/' + userName + '/repos?access_token=' + token).success(function(data) {
     $scope.repos = data;
   });
 
