@@ -6,12 +6,12 @@ ncApp.controller('GhCtrl', function($scope, $http) {
       token = 'f11d4dc981941aa90d0a188688e69bfa87c21b9b';
 
   // Get repo data
-  $http.get('https://api.github.com/' + userType + '/' + userName + '/repos?access_token=' + token).success(function(data) {
+  $http.get('https://api.github.com/' + userType + '/' + userName + '/repos').success(function(data) {
     $scope.repos = data;
   });
 
   // Get user data
-  $http.get('https://api.github.com/' + userType + '/' + userName + '?access_token=' + token).success(function(data) {
+  $http.get('https://api.github.com/' + userType + '/' + userName).success(function(data) {
     $scope.org = data;
   });
 
