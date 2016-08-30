@@ -4,6 +4,7 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" type="text/css" href="css/reset.css" media="screen">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
     <script src="js/controllers.js"></script>
@@ -13,14 +14,33 @@
     <![endif]-->
 
     <title>Novicell.GitHub.io</title>
-  </head>
-
-  <body ng-controller="GhCtrl">
-    <ul>
-      <li class="tiles"></li>
-      <li class="tiles"></li>
-      <li class="tiles"></li>
-    </ul>
-
-  </body>
+    </head>
+    
+    <body ng-controller="GhCtrl">
+        <div class="header">
+        </div>
+        <div class="container">
+            <ul class="tile-list">
+                <li class="tile-list__item">
+                    <header class="item-header"><h2>headline</h2>
+                    </header>
+                    <article>
+                        helelele
+                    </article>
+                    <footer>
+                         <p>last commit:<time>10:00</time></p>
+                    </footer>
+                </li>
+                <li class="tile-list__item">
+                    <header class="item-header"><h2>headline</h2>
+                    </header>
+                </li>
+                <li class="tile-list__item">
+                    <header class="item-header"><h2>headline</h2>
+                    </header>
+                </li>
+            </ul>
+        </div>
+        
+    </body>
 </html>
