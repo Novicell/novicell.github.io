@@ -18,28 +18,36 @@
     
     <body ng-controller="GhCtrl">
         <div class="header">
+            <div class="container"><nav>
+                <div class="brand">
+                    <a href="#">Novicell</a><strong>for the community</strong>
+                </div>
+            </nav>
+            </div>
         </div>
         <div class="container">
             <ul class="tile-list">
-                <li class="tile-list__item">
-                    <header class="item-header"><h2>headline</h2>
+                <li class="tile-list__item" ng-repeat="repo in repos | orderBy: -repo.name">
+                    <header class="item-header"><h2>{{repo.name}}</h2>
                     </header>
                     <article>
-                        helelele
+                        <h3 class="title">{{repo.description}}</h3>
+                        </h1>
                     </article>
-                    <footer>
-                         <p>last commit:<time>10:00</time></p>
+                    <footer class="tile-list__footer">
+                         <p class="tile-list__footer-text">open issues:{{repo.open_issues}}</p><p class="tile-list__footer-text">{{repo.language}}</p><p class="tile-list__footer-text">{{repo.created_at}}</p>
                     </footer>
                 </li>
-                <li class="tile-list__item">
-                    <header class="item-header"><h2>headline</h2>
-                    </header>
-                </li>
-                <li class="tile-list__item">
-                    <header class="item-header"><h2>headline</h2>
-                    </header>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <ul>
+                <li ng-repeat="issue in issues">
+                    {{issue.created_at}}
                 </li>
             </ul>
+            <a href="http://www.novicell.dk">#{{org.name}}</a>
         </div>
         
     </body>

@@ -6,18 +6,21 @@ ncApp.controller('GhCtrl', function($scope, $http) {
   var userName = 'novicell',
       userType = 'orgs',
       str1 = '0a1fde2db5ef80ea6d7f',
-	  str2 = '3b643be67f8269a3a6c1',
+	    str2 = '3b643be67f8269a3a6c1',
       token = str1 + str2;
 
   // Get repo data
   $http.get('https://api.github.com/' + userType + '/' + userName + '/repos?access_token=' + token).success(function(data) {
     $scope.repos = data;
+    console.log($scope.repos);
   });
 
   // Get user data
   $http.get('https://api.github.com/' + userType + '/' + userName).success(function(data) {
     $scope.org = data;
   });
+  
+
 
   /*
    *  Helper function

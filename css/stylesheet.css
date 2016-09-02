@@ -1,19 +1,47 @@
 body {
-    background: #d3d3d3;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position:relative;
+    background: #f2f2f2;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; /* google font later (roboto)*/
     line-height: 1.5;
+    color: #888888;
+}
+
+a {
+    text-decoration: none;
+    color: #888888;
+}
+/*a:hover, :active, :focus {
+   
+}*/
+
+p {
+    font-size: 10px;
 }
 
 .header {
-    height: 5em;
-    background: darkred;
+    height: 150px;
+    background: #cf423f;
     border: 1px solid #888888;
-    box-shadow: 0px 6px 15px #888888;
+    box-shadow: 0px 2px 15px #888888;
 
 }
+
+.brand {
+    line-height: 1.5;
+    margin: 20px 40px 0;
+}
+
+.brand a{
+    font-size: 4em;
+}
+.brand a, strong {
+        color: white;
+}
+
 .container {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
+    color: #888888;
 }
 
 .tile-list {
@@ -22,27 +50,71 @@ body {
 }
 
 .tile-list__item {
-    height: 15em;
-    width: 15em;
+    position: relative;
+    height: 18em;
+    width: 360px;
     background: white;
     display: flex;
     flex-direction: column;
     margin: 40px 40px;
     padding: 5px;
-    box-shadow: 2px 5px 2px #888888;
-    transition: background-color 2s ease-out;
+    box-shadow: 0px 0px 2px #888888;
+    transition: box-shadow 0.5s ease-out;
     text-align: center;
 
 }
 .tile-list__item:hover {
-    background: navajowhite;
+    box-shadow: 0px 0px 5px hsla(210, 100%, 56%, 0.9);
+    cursor: pointer;
+}
+
+.tile-list__footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 30px;
+    display:flex;
+    flex-wrap: wrap;
+    background-color: #f2f2f2 ;
+
+}
+
+.tile-list__footer-text {
+    display: flex;
+    flex-direction: row ;
+    margin: 0 10px;
+    font-size: 12px;
 }
 
 .item-header {
     border-bottom: 2px solid lightgrey;
 }
 
-article {
-    min-height: 10em;
+
+
+.title {
+    font-size: 1.5em;
+    text-align: left;
+    transition: color 0.5s ease-out;
+
 }
+.title:hover {
+    color: hsla(210, 100%, 56%, 0.7);
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+    text-align: center;
+    margin-top: 75px;
+}
+
 
