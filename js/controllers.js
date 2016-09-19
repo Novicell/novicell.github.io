@@ -1,6 +1,6 @@
 var ncApp = angular.module('ncApp', []);
 
-ncApp.controller('GhCtrl', function($scope, $http) {
+ncApp.controller('GhCtrl', function($scope, $http, $filter) {
 
 	
   var userName = 'novicell',
@@ -12,16 +12,34 @@ ncApp.controller('GhCtrl', function($scope, $http) {
   // Get repo data
   $http.get('https://api.github.com/' + userType + '/' + userName + '/repos?access_token=' + token).success(function(data) {
     $scope.repos = data;
-    console.log($scope.repos);
+     console.log ($scope.repos);
   });
 
   // Get user data
-  $http.get('https://api.github.com/' + userType + '/' + userName).success(function(data) {
+  $http.get('https://api.github.com/' + userType + '/' + userName + '?access_token=' + token).success(function(data) {
     $scope.org = data;
+    console.log ($scope.org);
   });
-  
 
+  var colors = [
+    {Name: 'JavaScript', Color: '#f1e05a'},
+    {Name: 'HTML', Color: '#e44b23'},
+    {Name: 'TypeScript', Color: '#2b7489'},
+    {Name: '"Objective-C++', Color: '#6866fb'},
+    {Name: 'CSS', Color: '#563d7c'},
+    {Name: 'CoffeeScrip', Color: '#244776'},
+    {Name: 'C Sharp', Color: '#178600'},
+  ]
+    
+ $scope.getBackgroundColor = function(str) {
+   var results = $filter('filter')(colors, { Name: str });
 
+   if(results.length > 0) {
+     return results[0].Color;
+   } else {
+     return '#222';
+   }
+ }
   /*
    *  Helper function
    */

@@ -3,16 +3,19 @@ body {
     background: #f2f2f2;
     font-family: Verdana, Geneva, Tahoma, sans-serif; /* google font later (roboto)*/
     line-height: 1.5;
-    color: #888888;
 }
 
 a {
     text-decoration: none;
-    color: #888888;
+    color: #222;
 }
-/*a:hover, :active, :focus {
-   
-}*/
+
+
+a:hover, :active, :focus, :visited {
+   text-decoration: none;
+   color: #222;
+
+}
 
 p {
     font-size: 10px;
@@ -21,7 +24,6 @@ p {
 .header {
     height: 150px;
     background: #cf423f;
-    border: 1px solid #888888;
     box-shadow: 0px 2px 15px #888888;
 
 }
@@ -41,7 +43,6 @@ p {
 .container {
     width: 95%;
     margin: 0 auto;
-    color: #888888;
 }
 
 .tile-list {
@@ -53,19 +54,20 @@ p {
     position: relative;
     height: 18em;
     width: 360px;
-    background: white;
     display: flex;
     flex-direction: column;
-    margin: 40px 40px;
-    padding: 5px;
+    margin: 30px 30px;
     box-shadow: 0px 0px 2px #888888;
     transition: box-shadow 0.5s ease-out;
     text-align: center;
+    background-color: #fafafa;
+    color: #fff;
+    
 
 }
 .tile-list__item:hover {
-    box-shadow: 0px 0px 5px hsla(210, 100%, 56%, 0.9);
     cursor: pointer;
+    box-shadow: 0px 0px 10px #888888;
 }
 
 .tile-list__footer {
@@ -73,22 +75,20 @@ p {
     bottom: 0;
     right: 0;
     left: 0;
-    height: 30px;
+    height: 20px;
     display:flex;
     flex-wrap: wrap;
-    background-color: #f2f2f2 ;
+    text-align: right;
 
 }
 
 .tile-list__footer-text {
     display: flex;
-    flex-direction: row ;
+    flex-direction: column;
     margin: 0 10px;
     font-size: 12px;
-}
-
-.item-header {
-    border-bottom: 2px solid lightgrey;
+    color: #222;
+    text-align: center;
 }
 
 
@@ -97,24 +97,29 @@ p {
     font-size: 1.5em;
     text-align: left;
     transition: color 0.5s ease-out;
+    color: #222;
+    padding: 10px 5px;
 
 }
 .title:hover {
-    color: hsla(210, 100%, 56%, 0.7);
-}
-
-footer {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+    color: #000;
 }
 
 .footer {
     position: absolute;
+    display: flex;
     right: 0;
     left: 0;
-    text-align: center;
+
     margin-top: 75px;
+    width: 100%;
 }
 
+.footer-boxes {
+    display:flex;
+    flex-direction: column;
+    vertical-align: center;
+    width: 33.333%;
+    text-align: center;
+}
 
