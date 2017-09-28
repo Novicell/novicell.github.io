@@ -1,54 +1,105 @@
 <!DOCTYPE html>
 <html ng-app="ncApp">
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="css/print.css" media="print">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
-    <script src="js/controllers.js"></script>
+    <link rel="stylesheet" href="dist/css/master.min.css">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <title>Novicell.GitHub.io</title>
-  </head>
+</head>
 
-  <body ng-controller="GhCtrl">
-    <header>
-      <div class="inner">
-        <h1>{{org.name || org.login}}</h1>
-        <h2>{{org.description}}</h2>
-        <a href="{{org.html_url}}" class="button"><small>Follow us on</small> GitHub</a>
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section class="main-content" id="main-content">
-          <ul>
-            <li ng-repeat="repo in repos | orderBy: -repo.name">
-              <a href="{{repo.html_url}}">
-                <h3 style="color: {{stringToColor(repo.name)}}">{{repo.name}}</h3>
-                <p>{{repo.description}}</p>
-              </a>
-            </li>
-          </ul>
-        </section>
-
-        <aside id="sidebar">
-
-          <img src="{{org.avatar_url}}" alt="{{org.name || org.login}}" height="80" width="80"/><br>
-          <span>Repositories: {{org.public_repos}}</span>
-          <span>Follower: {{org.followers}}</span>
-          <span>Following: {{org.following}}</span>
-        </aside>
-      </div>
+<body class="body" ng-controller="GhCtrl">
+<header>
+    <div class="header">
+        <h1 class="header__heading1"> <!--{{org.name || org.login}} --> Novicell</h1>
+        <h3 class="header__heading3"> <!--{{org.name || org.login}} --> Frontend</h3>
+        <!--<img src="images/logo/novicell_logo_2014-white_200px.png" height="108" width="200"/>-->
+        <!--<h2 class="header__subheading">{{org.description}}</h2>-->
+        <!--<a href="{{org.html_url}}" class="button"><small>Follow us on</small> GitHub</a>-->
     </div>
+</header>
 
+<div class="container">
+    <form name="myForm">
+        <fieldset class="filter">
+            <p class="filter__tab filter__tab--active" ng-click="goToTab(0)">
+                <label class="filter__icon">
+                    <input class="filter__input" type="radio" ng-model="filter" checked value="">
+                    All
+                </label>
+            </p>
+            <p class="filter__tab" ng-click="goToTab(1)">
+                <label class="filter__icon">
+                    <input class="filter__input" type="radio" ng-model="filter" value="html">
+                    <svg viewBox="0 0 128 128">
+                        <path fill="#E44D26"
+                              d="M27.854 116.354l-8.043-90.211h88.378l-8.051 90.197-36.192 10.033z"></path>
+                        <path fill="#F16529" d="M64 118.704l29.244-8.108 6.881-77.076h-36.125z"></path>
+                        <path fill="#EBEBEB"
+                              d="M64 66.978h-14.641l-1.01-11.331h15.651v-11.064h-27.743l.264 2.969 2.72 30.489h24.759zM64 95.711l-.049.013-12.321-3.328-.788-8.823h-11.107l1.55 17.372 22.664 6.292.051-.015z"></path>
+                        <path d="M28.034 1.627h5.622v5.556h5.144v-5.556h5.623v16.822h-5.623v-5.633h-5.143v5.633h-5.623v-16.822zM51.816 7.206h-4.95v-5.579h15.525v5.579h-4.952v11.243h-5.623v-11.243zM64.855 1.627h5.862l3.607 5.911 3.603-5.911h5.865v16.822h-5.601v-8.338l-3.867 5.981h-.098l-3.87-5.981v8.338h-5.502v-16.822zM86.591 1.627h5.624v11.262h7.907v5.561h-13.531v-16.823z"></path>
+                        <path fill="#fff"
+                              d="M63.962 66.978v11.063h13.624l-1.284 14.349-12.34 3.331v11.51l22.682-6.286.166-1.87 2.6-29.127.27-2.97h-2.982zM63.962 44.583v11.064h26.725l.221-2.487.505-5.608.265-2.969z"></path>
+                    </svg>
+                </label>
+            </p>
+            <p class="filter__tab" ng-click="goToTab(2)">
+                <label class="filter__icon">
+                    <input class="filter__input" type="radio" ng-model="filter" value="css">
+                    <svg viewBox="0 0 128 128">
+                        <path fill="#131313"
+                              d="M89.234 5.856h-7.384l7.679 8.333v3.967h-15.816v-4.645h7.678l-7.678-8.333v-3.971h15.521v4.649zm-18.657 0h-7.384l7.679 8.333v3.967h-15.817v-4.645h7.679l-7.679-8.333v-3.971h15.522v4.649zm-18.474.19h-7.968v7.271h7.968v4.839h-13.632v-16.949h13.632v4.839z"></path>
+                        <path fill="#1572B6"
+                              d="M27.613 116.706l-8.097-90.813h88.967l-8.104 90.798-36.434 10.102-36.332-10.087z"></path>
+                        <path fill="#33A9DC" d="M64.001 119.072l29.439-8.162 6.926-77.591h-36.365v85.753z"></path>
+                        <path fill="#fff"
+                              d="M64 66.22h14.738l1.019-11.405h-15.757v-11.138h27.929000000000002l-.267 2.988-2.737 30.692h-24.925v-11.137z"></path>
+                        <path fill="#EBEBEB"
+                              d="M64.067 95.146l-.049.014-12.404-3.35-.794-8.883h-11.178999999999998l1.561 17.488 22.814 6.333.052-.015v-11.587z"></path>
+                        <path fill="#fff"
+                              d="M77.792 76.886l-1.342 14.916-12.422 3.353v11.588l22.833-6.328.168-1.882 1.938-21.647h-11.175z"></path>
+                        <path fill="#EBEBEB"
+                              d="M64.039 43.677v11.136999999999999h-26.903000000000002l-.224-2.503-.507-5.646-.267-2.988h27.901zM64 66.221v11.138h-12.247l-.223-2.503-.508-5.647-.267-2.988h13.245z"></path>
+                    </svg>
+                </label>
+            </p>
+            <p class="filter__tab" ng-click="goToTab(3)">
+                <label class="filter__icon">
+                    <input class="filter__input" type="radio" ng-model="filter" value="javascript">
+                    <svg viewBox="0 0 128 128">
+                        <path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185h-125.184z"></path>
+                        <path fill="#323330"
+                              d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.38-8.581zm-46.885-37.793h-11.709l-.048 30.272c0 6.438.333 12.34-.714 14.149-1.713 3.558-6.152 3.117-8.175 2.427-2.059-1.012-3.106-2.451-4.319-4.485-.333-.584-.583-1.036-.667-1.071l-9.52 5.83c1.583 3.249 3.915 6.069 6.902 7.901 4.462 2.678 10.459 3.499 16.731 2.059 4.082-1.189 7.604-3.652 9.448-7.401 2.666-4.915 2.094-10.864 2.07-17.444.06-10.735.001-21.468.001-32.237z"></path>
+                    </svg>
+                </label>
+            </p>
+        </fieldset>
+    </form>
 
-  </body>
+    <!--
+    Tab content-->
+    <div class="content-wrapper">
+        <div class="tab-content tab-content--active" id="js-tab-1">
+            <ul class="repo-list">
+                <li class="repo fade-in repo--theme-{{repo.language}}"
+                    ng-repeat="repo in repos | filter: {language: filter} | orderBy: -repo.name ">
+                    <a class="repo__link" href="{{repo.html_url}}">
+                        <h3 class="repo__heading">{{repo.name}}</h3>
+                        <p class="repo__description">{{repo.description}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> <!-- Content container-->
+</div>
+
+</div>  <!-- End of .container -->
+
+<script src="dist/scripts/master.min.js"></script>
+</body>
 </html>
